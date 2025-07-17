@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamming Distance Sequences (OEIS) - Sophia Pi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        h1, h2, h3 {
+            font-family: 'Lora', serif;
+        }
+        /* Styles for the article content */
+        .prose {
+            color: #334155; /* slate-700 */
+        }
+        .prose h2 {
+            font-size: 1.5rem;
+            line-height: 2rem;
+            font-weight: 700;
+            margin-top: 2em;
+            margin-bottom: 1em;
+        }
+        .prose p {
+            line-height: 1.75;
+            margin-bottom: 1.25em;
+        }
+        .prose img {
+            border-radius: 0.5rem;
+            margin-top: 2em;
+            margin-bottom: 2em;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .prose a {
+            color: #0ea5e9; /* sky-500 */
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+        .prose a:hover {
+            color: #0284c7; /* sky-600 */
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl font-bold text-slate-900">Sophia Pi</a>
+                </div>
+                <nav class="hidden md:flex md:space-x-8">
+                    <a href="index.html#about" class="text-gray-500 hover:text-slate-900 transition-colors">About</a>
+                    <a href="index.html#news" class="text-gray-500 hover:text-slate-900 transition-colors">News</a>
+                    <a href="index.html#projects" class="text-gray-500 hover:text-slate-900 transition-colors">Projects</a>
+                    <a href="blog.html" class="text-gray-500 hover:text-slate-900 transition-colors">Blog</a>
+                    <a href="art.html" class="text-gray-500 hover:text-slate-900 transition-colors">Art</a>
+                    <a href="tutoring.html" class="text-gray-500 hover:text-slate-900 transition-colors">Tutoring</a>
+                    <a href="contact.html" class="text-gray-500 hover:text-slate-900 transition-colors">Contact</a>
+                </nav>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-slate-500 hover:text-slate-900">
+                        <i data-lucide="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-200">
+            <a href="index.html#about" class="block py-2 px-4 text-sm text-gray-500 hover:bg-slate-100">About</a>
+            <a href="index.html#news" class="block py-2 px-4 text-sm text-gray-500 hover:bg-slate-100">News</a>
+            <a href="index.html#projects" class="block py-2 px-4 text-sm text-gray-500 hover:bg-slate-100">Projects</a>
+            <a href="blog.html" class="block py-2 px-4 text-sm text-gray-500 hover:bg-slate-100">Blog</a>
+            <a href="art.html" class="block py-2 px-4 text-sm text-gray-500 hover:bg-slate-100">Art</a>
+            <a href="tutoring.html" class="block py-2 px-4 text-sm text-gray-500 hover:bg-slate-100">Tutoring</a>
+            <a href="contact.html" class="block py-2 px-4 text-sm text-gray-500 hover:bg-slate-100">Contact</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
+        
+        <!-- Project Header -->
+        <div class="py-12 sm:py-16">
+            <nav class="mb-6">
+                <a href="index.html#projects" class="text-sky-600 hover:text-sky-700 flex items-center">
+                    <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
+                    Back to Projects
+                </a>
+            </nav>
+            <h1 class="text-4xl font-bold text-slate-900 mb-4">Hamming Distance Sequences (OEIS)</h1>
+            <p class="text-xl text-slate-600 mb-6">A mathematical sidequest with my friend Mithra Karamchedu that led to contributing two sequences to the Online Encyclopedia of Integer Sequences.</p>
+        </div>
+
+        <!-- Project Image -->
+        <div class="mb-12">
+            <img src="hamming thumbnail.png" alt="Hamming Distance Sequences" class="w-full rounded-lg shadow-md">
+        </div>
+
+        <!-- Project Content -->
+        <div class="prose prose-slate max-w-none">
+            <p class="text-lg text-slate-700 mb-8 leading-relaxed">
+                Sometimes the best mathematical discoveries happen when you're just playing around with ideas. My friend Mithra Karamchedu and I found ourselves exploring hamming distances one day, and what started as a casual investigation turned into a contribution to one of the most comprehensive mathematical databases in the world.
+            </p>
+            
+            <p>
+                The <strong>hamming distance</strong> between two strings is the number of positions at which the corresponding symbols are different. It's a fundamental concept in information theory, coding theory, and many other areas of computer science and mathematics.
+            </p>
+            
+            <p>
+                During our exploration, we discovered some interesting patterns and sequences that hadn't been documented before. After verifying our findings and following the proper submission process, we were able to contribute two new sequences to the <strong>Online Encyclopedia of Integer Sequences (OEIS)</strong>.
+            </p>
+            
+            <p>
+                This project represents the kind of mathematical curiosity that drives research - sometimes the most interesting discoveries come from asking "what if?" and following where that question leads, even if it's just for fun.
+            </p>
+        </div>
+
+        <!-- Project Links -->
+        <div class="mt-12 bg-white rounded-lg shadow-md border border-slate-200 p-6">
+            <h3 class="text-lg font-semibold text-slate-900 mb-4">OEIS Sequences</h3>
+            <div class="flex flex-wrap gap-4">
+                <a href="https://oeis.org/A365618" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-sky-600 text-white px-4 py-2 rounded-lg hover:bg-sky-700 transition-colors">
+                    <i data-lucide="external-link" class="w-4 h-4 mr-2"></i>
+                    Sequence A365618
+                </a>
+                <a href="https://oeis.org/A367055" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-sky-600 text-white px-4 py-2 rounded-lg hover:bg-sky-700 transition-colors">
+                    <i data-lucide="external-link" class="w-4 h-4 mr-2"></i>
+                    Sequence A367055
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-100 border-t border-slate-200 mt-16">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="text-slate-500 hover:text-slate-900">
+                    <i data-lucide="mail" class="w-7 h-7"></i>
+                </a>
+                <a href="#" class="text-slate-500 hover:text-slate-900">
+                    <i data-lucide="twitter" class="w-7 h-7"></i>
+                </a>
+                <a href="#" class="text-slate-500 hover:text-slate-900">
+                    <span class="sr-only">Google Scholar</span>
+                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.242 13.769L0 9.5L12 0l12 9.5l-5.242 4.269C17.548 11.249 14.978 9 12 9s-5.548 2.249-6.758 4.769zM12 10c-1.381 0-2.5 1.119-2.5 2.5s1.119 2.5 2.5 2.5s2.5-1.119 2.5-2.5s-1.119-2.5-2.5-2.5zM12 15a2 2 0 100-4 2 2 0 000 4z"/><path d="M12 14c-2.33 0-4.474 1.186-5.833 3.004L12 24l5.833-6.996C16.474 15.186 14.33 14 12 14z"/></svg>
+                </a>
+                <a href="#" class="text-slate-500 hover:text-slate-900">
+                    <i data-lucide="github" class="w-7 h-7"></i>
+                </a>
+                <a href="#" class="text-slate-500 hover:text-slate-900">
+                    <i data-lucide="linkedin" class="w-7 h-7"></i>
+                </a>
+            </div>
+            <div class="text-center text-slate-500 mt-8 text-sm">
+                &copy; 2025 Sophia Pi. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize lucide icons
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
