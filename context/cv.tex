@@ -1,0 +1,526 @@
+% Your CV in LaTeX format
+
+\documentclass[a4paper,11pt]{article}
+
+% Package imports
+\usepackage{latexsym}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage[empty]{fullpage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{marvosym}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{cfr-lm}
+\usepackage[T1]{fontenc}
+\usepackage{fontawesome5}
+\usepackage{soul}
+
+% Color definitions
+\definecolor{darkblue}{RGB}{0,0,139}
+
+% Page layout
+\setlength{\multicolsep}{0pt} 
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\geometry{left=1.4cm, top=0.8cm, right=1.2cm, bottom=1cm}
+\setlength{\footskip}{5pt} % Addressing fancyhdr warning
+
+% Hyperlink setup (moved after fancyhdr to address warning)
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkblue,
+    filecolor=darkblue,
+    urlcolor=darkblue,
+}
+
+% Custom box settings
+\usepackage[most]{tcolorbox}
+\tcbset{
+    frame code={},
+    center title,
+    left=0pt,
+    right=0pt,
+    top=0pt,
+    bottom=0pt,
+    colback=gray!20,
+    colframe=white,
+    width=\dimexpr\textwidth\relax,
+    enlarge left by=-2mm,
+    boxsep=4pt,
+    arc=0pt,outer arc=0pt,
+}
+
+% URL style
+\urlstyle{same}
+
+% Text alignment
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item{
+    \textbf{#1}{\hspace{0.5mm}#2 \vspace{-0.5mm}}
+  }
+}
+
+\newcommand{\resumePOR}[3]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1}\hspace{0.3mm}#2 & \textit{\small{#3}} 
+    \end{tabular*}
+    \vspace{-2mm}
+}
+
+\newcommand{\resumeSubheading}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#4}} \\
+        \textit{\footnotesize{#3}} &  \footnotesize{#2}\\
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeProject}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#3}} \\
+        \footnotesize{\textit{#2}} & \footnotesize{#4}
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumePublication}[4]{
+  \vspace{1mm}\item
+  \textbf{#1} \\ % Title
+  \textit{#2} \\ % Authors
+  #3 \hfill \href{#4}{\small [Link]} % Venue and link
+  \vspace{-1mm}
+}
+
+% Alternative version without link (for works in progress):
+\newcommand{\resumePublicationNoLink}[3]{
+  \vspace{1mm}\item
+  \textbf{#1} \\ % Title
+  \textit{#2} \\ % Authors
+  #3 % Venue
+  \vspace{-1mm}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand{\labelitemii}{$\vcenter{\hbox{\tiny$\circ$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm]}
+\newcommand{\resumeHeadingSkillStart}{\begin{itemize}[leftmargin=*,itemsep=1.7mm, rightmargin=2ex]}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,itemsep=0.5mm]}
+
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
+\newcommand{\resumeHeadingSkillEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\cvsection}[1]{%
+\vspace{2mm}
+\begin{tcolorbox}
+    \textbf{\large #1}
+\end{tcolorbox}
+    \vspace{-4mm}
+}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
+\newcolumntype{C}{>{\centering\arraybackslash}X}%
+
+% Commands for icon sizing and positioning
+\newcommand{\socialicon}[1]{\raisebox{-0.05em}{\resizebox{!}{1em}{#1}}}
+\newcommand{\ieeeicon}[1]{\raisebox{-0.3em}{\resizebox{!}{1.3em}{#1}}}
+
+% Font options
+\newcommand{\headerfonti}{\fontfamily{phv}\selectfont} % Helvetica-like (similar to Arial/Calibri)
+\newcommand{\headerfontii}{\fontfamily{ptm}\selectfont} % Times-like (similar to Times New Roman)
+\newcommand{\headerfontiii}{\fontfamily{ppl}\selectfont} % Palatino (elegant serif)
+\newcommand{\headerfontiv}{\fontfamily{pbk}\selectfont} % Bookman (readable serif)
+\newcommand{\headerfontv}{\fontfamily{pag}\selectfont} % Avant Garde-like (similar to Trebuchet MS)
+\newcommand{\headerfontvi}{\fontfamily{cmss}\selectfont} % Computer Modern Sans Serif
+\newcommand{\headerfontvii}{\fontfamily{qhv}\selectfont} % Quasi-Helvetica (another Arial/Calibri alternative)
+\newcommand{\headerfontviii}{\fontfamily{qpl}\selectfont} % Quasi-Palatino (another elegant serif option)
+\newcommand{\headerfontix}{\fontfamily{qtm}\selectfont} % Quasi-Times (another Times New Roman alternative)
+\newcommand{\headerfontx}{\fontfamily{bch}\selectfont} % Charter (clean serif font)
+
+\begin{document}
+\headerfontiii
+
+% Header
+\begin{center}
+    {\Huge\textbf{Sophia Pi}}
+\end{center}
+\vspace{-6mm}
+
+\begin{center}
+    \small{
+    +1-503-875-5136 | \href{mailto:sophiapi2026.1@u.northwestern.edu}{sophiapi2026.1@u.northwestern.edu} | \href{hemlock-pi.github.io}{hemlock-pi.github.io}
+    % \href{https://www.linkedin.com/in/sophia-yixinyun-pi/} {linkedin.com/in/sophia-yixinyun-pi/} 
+    }
+\end{center}
+\vspace{-6mm}
+
+\begin{center}
+    \small{R\&B Feldmann Fellow $\vert$ Walter P. Murphy Scholar $\vert$ AAAI UC Scholar}
+\end{center}
+
+\vspace{-4mm}
+
+\section{\textbf{Summary}}
+\vspace{1mm}
+\small{
+Undergraduate researcher in theoretical and empirical machine learning with experience in generative models, agentic systems, and network economics. Interested in the geometry and sample complexity of modern generative models, learning dynamics in multi-agent systems, and economic interfaces of ML; seeking a PhD to pursue research at the intersection of ML theory and the design of robust, data-driven systems.
+% Student researcher and startup co-founder passionate about solving high-impact, foundational problems in AI/ML, deep learning theory, mathematics, and economics. Driven, hardworking, collaborative, and creative student leader pursuing an interdisciplinary career in research.
+}
+\vspace{-2mm}
+
+\section{\textbf{Education}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{Northwestern University}{Evanston, IL}
+{Combined Bachelor of Science, Bachelor of Arts}{Class of 2026}
+\resumeItemListStart
+\item Major: Computer Science (adjunct degree in Mathematical Methods in the Social Sciences, + Mathematics minor); CS Major GPA: 4.0, Cumulative GPA: 3.8
+\resumeItemListEnd
+
+% \resumeSubheading
+% {Stanford University Mathematics Camp}{Stanford, CA (remote)}
+% {Summer Session}{Class of 2021}
+% \resumeItemListStart
+% \item Highly competitive (<10% acceptance rate) summer program
+% \item Program II (Algebraic Topology): Analyzed the topological properties of abstract shapes using algebraic concepts
+% \item Research Project: Exploring the Hopf Fibration and Fiber Bundles
+% \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+\vspace{-6mm}
+
+
+% \section{\textbf{Publications and Works in Progress}}
+% \vspace{-0.4mm}
+% \resumeSubHeadingListStart
+
+% \resumeSubheading
+%         {"On Statistical Rates and Provably Efficient Criteria of Latent Diffusion Transformers (DiTs)"}{}
+%         {NeurIPS '24 Conference Paper}{}
+
+% \resumeSubHeadingListEnd
+% \vspace{-6mm}
+
+\section{\textbf{Publications, Conference Presentations, and Works to be Submitted}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumePublication
+    {On Statistical Rates and Provably Efficient Criteria of Latent Diffusion Transformers (DiTs)}
+    {Jerry Yao-Chieh Hu*, Weimin Wu*, Yi-Chen Lee*, Yu-Chao Huang, Sophia Pi, Han Liu}
+    {NeurIPS '24 (Conference Paper)}
+    {https://proceedings.neurips.cc/paper_files/paper/2024/file/37f6bed18b9b404f53dcaec4607c4fb7-Paper-Conference.pdf} % Replace with actual link
+
+\resumePublication
+    {On Flow Matching KL Divergence}
+    {Maojiang Su*, Jerry Yao-Chieh Hu*, Sophia Pi, Han Liu}
+    {Preprint (to be submitted to ICML '26)}
+    {https://arxiv.org/abs/2511.05480}
+
+\resumePublication
+    {Learning Manifold Data With Flow Matching}
+    {Sophia Pi*, Jerry Yao-Chieh Hu*, Mingchen Lu, Maojiang Su, Weimin Wu, Minshou Chen, Han Liu}
+    {Draft complete; preview available on my private site (to be submitted to ICML '26)}
+    {hemlock-pi.github.io}
+
+\resumePublication
+    {Highlighting Limitations of Generative AI in Early-Drug Discovery}
+    {Sophia Pi, Walter Virany, David Baron, Ellen Li}
+    {Joint Math Meetings '25 Talk (30 min, co-presented for AMS Special Session on AI Applications in Health and Medicine), Nebraska Conference for Undergraduate Women in Mathematics Talk (15 min, solo presented)}
+    {https://meetings.ams.org/math/jmm2025/meetingapp.cgi/Paper/39236}
+
+\resumePublication
+    {Exploring Topological Properties in Artificial Neural Networks}
+    {Sophia Pi}
+    {AAAI Undergraduate Consortium '25 (lightning talk and poster in the main session)}
+    {https://ojs.aaai.org/index.php/AAAI/article/view/35338}
+
+\resumeSubHeadingListEnd
+\vspace{-6mm}
+
+
+
+\section{\textbf{Research Experience}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+        {Senior Thesis}{Evanston, IL}
+        {Student}{September 2025 – Present}
+        \resumeItemListStart
+            \item $[$Work in progress$]$ MMSS thesis in network economics studying how structural balance and external information affect affective polarization in signed social networks; analyze linear opinion-updating rules on signed graphs using operator-theoretic tools (e.g., spectral radii and stability regions) to characterize regimes of convergence, damping, and instability (advised by Prof. Ben Golub)
+            \item So far I've corrected some spurious claims made in the most recent work in the literature and generalized some key lemmas relating structural balance to spectral properties [WORD THIS MORE PROFESSIONALLY]
+        \resumeItemListEnd
+
+\resumeSubheading
+      {Carnegie Mellon Language Technologies Institute}{Pittsburgh, PA}
+      {Summer Research Intern}{June 2025 – Present}
+      \resumeItemListStart
+        \item $[$Work in progress$]$ Designed and implemented a cost-sensitive LLM router that uses RL to learn how to route to the best and most cost-efficient LLM at each step in a SWE task trajectory (advised by Prof. Graham Neubig, Apurva Ghandi)
+        \item Achieved 4\% improvement in SWE-Bench performance and 15\% reduction in cost (compared to baseline Claude 4 Sonnet)
+      \resumeItemListEnd 
+
+\resumeSubheading
+      {Artificial Neural Topology Independent Study}{Philadelphia, PA}
+      {Undergraduate Researcher}{Oct 2024 – Feb 2025}
+      \resumeItemListStart
+        \item $[$Accepted to \textbf{AAAI '25} Undergraduate Consortium$]$
+        \item Wrote a proposal characterizing the emergence of low-dimensional manifold structures in autonomous driving vision models by analyzing high-dimensional representations and their alignment with the topologies of encoded variables, inspired by analogous neuroscientific results about the latent topology of head-direction cells in rats
+      \resumeItemListEnd 
+      
+\resumeSubheading
+    {Institute for Pure and Applied Math, Relay Therapeutics}{Los Angeles, CA and Cambridge, MA}
+    {RIPS REU Research Associate}{Jun 2024 – Aug 2024}
+    \resumeItemListStart
+      \item $[$Contributed talk for the AMS Special Session on AI Applications in Health and Medicine at \textbf{JMM '25}; Contributed talk for \textbf{NCUWM '25}$]$
+      \item One of 36 undergraduates (out of 4,000+ applicants) selected for the Research in Industrial Projects for Students (RIPS) research experience
+      \item Collaborated with Relay Therapeutics to develop novel comparative analyses of de novo molecular generation with generative AI for early drug discovery (advised by Prof. Susana Serna, Fang Sun, Luca Ponzoni)
+    \resumeItemListEnd
+
+\resumeSubheading
+    {MAGICS Lab Researcher}{Evanston, IL}
+    {Undergraduate Researcher}{Dec 2023 – Present}
+    \resumeItemListStart
+      \item $[$Paper "On Statistical Rates and Provably Efficient Criteria of Latent Diffusion Transformers (DiTs)" presented as a poster at \textbf{NeurIPS '24}$]$ Deriving theoretical bounds for universal approximation and sample complexity of diffusion transformers (advised by Prof. Han Liu, Jerry Hu)
+      \item $[$Paper "Learning Manifold Data With Flow Matching" in progress, planning to be submitted to ICML '26$]$ Studied flow-matching transformers when data lie on a low-dimensional manifold; Derived novel velocity decomposition, showed [revise wording here] risk decoupling, derived [revise wording here] identifiability results, and established tighter (near-minimax) sample-complexity bounds for velocity approximation, velocity estimation, and distribution estimation, showing how flow-matching transformers escape the curse of dimensionality by utilizing intrinsic data structure (advised by Prof. Han Liu, Jerry Hu)
+      \item $[$Paper "On Flow Matching KL Divergence" to be submitted to ICML '26, \textbf{preprint available on arxiv}$]$ Implemented and ran numerical experiments to empirically validate KL identities and KL error bounds for flow-matching objectives, both with and without learned velocity fields (using controlled perturbations in the latter case), and proofread and stress-tested the accompanying theorem proofs (advised by Prof. Han Liu, Jerry Hu)
+      % \item $[$Paper in progress$]$ Developing theoretical bounds on the divergence between score-matching and MLE losses for state-of-the-art generative models using isoperimetric properties of ground truth probability distributions
+    \resumeItemListEnd
+
+% \resumeSubheading
+%       {UCLA Data Mining Lab}{Los Angeles, CA (remote)}
+%       {Undergraduate Researcher}{Aug 2024 – Present}
+%       \resumeItemListStart
+%         % \item $[$Paper in progress$]$
+%         \item Developing novel GNN-based architectures for chemical reaction prediction from an energy-based, dynamical systems perspective
+%       \resumeItemListEnd 
+
+\resumeSubheading
+    {R\&B Feldmann Research Fellowship}{Evanston, IL}
+    {Research Fellow}{Jun 2023 – Aug 2023, Dec 2024 – Jan 2025}
+    \resumeItemListStart
+      \item $[$Project "Community Detection with Label Propagation: Characterizing Behavior Across Different Stochastic Block Model Regimes" presented at NU CS Undergraduate Research Symposium, IDEAL Institute Workshop$]$
+      \item Awarded a summer research fellowship to conduct research on community detection for machine learning
+      \item Primary project (advised by Prof. Miklos Racz, Shuwen Chai): Analyzed convergence properties of variants of the label propagation algorithm on different regimes of the stochastic block model by coding empirical simulations and writing mathematical proofs for theoretical analysis
+    \resumeItemListEnd
+    
+\resumeSubheading
+    {ProjectX Competitor}{Evanston, IL}
+    {Student Researcher}{Sep 2023 – Jan 2024}
+    \resumeItemListStart
+      % \item $[$Paper "Feed-Forward Assisted Transformers for Time Efficient Fine-Tuning" \textbf{won 3rd place} among 22 schools, outranking universities including CMU, Penn, Harvard, Cornell, Duke, U Washington, etc.$]$
+      \item $[$Paper "Feed-Forward Assisted Transformers for Time Efficient Fine-Tuning" \textbf{won 3rd place} among 22 schools$]$
+      \item Built and fine-tuned a novel language model FAST (Feed-forward Assisted Sentence Transformers) that achieved results comparable to the state of the art on several downstream language processing tasks with an over 200x speedup in computational efficiency. 
+      \item Individually researched information density of sentence embeddings using manifold learning and intrinsic dimensionality analysis.
+    \resumeItemListEnd
+
+\resumeSubheading
+    {Causal Factors of Early Onset Breast Cancer Project}{Evanston, IL}
+    {Student Researcher}{Jan 2024 – Jun 2024}
+    \resumeItemListStart
+      \item Developed causal models from longitudinal electronic health record (EHR) data to identify key factors contributing to the rising incidence of EOBC among young women and to enhance early detection strategies (advised by Prof. Zach Wood-Doughty)
+    \resumeItemListEnd
+    
+\resumeSubheading
+    {Hamming Distance and Fractal Dimension Study}{Claremont, CA (remote)}
+    {Student Researcher}{Jun 2023 – Jun 2023}
+    \resumeItemListStart
+      \item Characterized the behavior and fractal dimension of a novel fractal constructed based on the hamming distance metric extended to 2-dimensional topological space
+      \item Published hamming fractal sequence to the \textbf{Online Encyclopedia of Integer Sequences} (A365618 and A367055)
+      \item Collaborated with Mithra Karamchedu, advised by Prof. Peter Kagey (Harvey Mudd)
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+\vspace{-6mm}
+
+\section{\textbf{Honors and Awards}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumePOR{Peter and Adrienne Barris Outstanding PM Award}
+    {}{Apr 2025}
+\resumePOR{Hillier Baker Memorial Scholarship Winner}
+    {}{Sep 2024}
+\resumePOR{VentureCat Pitch Competition 1st Place (Life Sciences and Innovations Track)}
+    {}{May 2024}
+\resumePOR{IMC Trading Launchpad Participant}
+    {}{Mar 2024}
+\resumePOR{ProjectX AI Research Competition 3rd Place}
+    {}{Jan 2024}
+\resumePOR{Doron Abosch Memorial Scholarship Winner}
+    {}{Jan 2024}
+\resumePOR{Propel Startup Grant (Alpime Health)}
+    {}{Sep 2023}
+% \resumePOR{Voice of Civic Engagement in Technology Award}
+%     {}{Jul 2023}
+\resumePOR{President’s Volunteer Service Award Bronze Medal}
+    {}{Jan 2023}
+% \resumePOR{Northwestern High Honors}
+%     {}{Dec 2022}
+\resumePOR{Northwestern Design Thinking and Communication Award}
+    {}{Nov 2022}
+\resumePOR{Carnegie Mellon Knaster Scholarship (declined)}
+    {}{Apr 2022}
+% \resumePOR{National Merit Scholarship Winner}
+%     {}{Mar 2022}
+% \resumePOR{President’s Volunteer Service Award Silver Medal}
+%     {}{Jan 2022}
+
+\resumeSubHeadingListEnd
+\vspace{-6mm}
+
+\section{\textbf{Other Activities}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+    {Alpime Health}{Evanston, IL}
+    {Co-Founder, Chief Technology Officer (CTO)}{Jul 2023 – Dec 2024}
+    \resumeItemListStart
+      \item Co-founded Alpime Health, a startup developing and implementing an OCR- and LLM-powered electronic health records system in the Ivory Coast and West Africa
+      % \item Selected for Residency at The Garage, a highly competitive startup accelerator program for the most dedicated student entrepreneurs at Northwestern
+      \item Won first place in the Life Sciences and Medical Innovations track at VentureCat 2024
+      \item Partnering with the Ivorian National Ministry of Health, secured pilot testing at Polyclinique Sainte Anne-Marie
+      \item Collaborated with Bill and Melinda Gates Foundation-backed Cognitive Care
+    \resumeItemListEnd
+    
+\resumeSubheading
+    {Northwestern University Financial Technologies}{Evanston, IL}
+    {Market Making Team, Quant/Research Team}{Oct 2022 – Mar 2024}
+    \resumeItemListStart
+      \item Built, tested, and deployed different market making strategies to our market simulator
+      \item Used mathematical, probabilistic, and statistical theories to interpret, conceptualize, and communicate financial signals to the algorithm team 
+    \resumeItemListEnd
+
+\resumeSubheading
+    {Northwestern Association for Women in Mathematics}{Evanston, IL}
+    {Co-President}{Sep 2023 – Present}
+    \resumeItemListStart
+      \item Organized association meetings, talks, and events, liaisoned with faculty and external guests, and spearheaded recruitment
+    \resumeItemListEnd
+
+% \resumeSubheading
+%     {Murphy Scholars Program}{Evanston, IL}
+%     {Scholar}{Mar 2023 – Present}
+%     \resumeItemListStart
+%       \item Appointed a Murphy scholar
+%       \item Host symposia and poster presentations with other Murphy scholars for the McCormick engineering undergraduate student body
+%       \item Collaborating with Faculty Fellows to construct interdisciplinary research project
+%     \resumeItemListEnd
+
+\resumeSubheading
+    {Kappa Theta Pi Fraternity}{Evanston, IL}
+    {Member}{Jan 2024 – Present}
+    \resumeItemListStart
+      % \item One of 20 students selected out of an applicant pool of 120+
+      \item Completed capstone project applying few-shot visual deep learning to positional figure skating analysis
+    \resumeItemListEnd
+
+\resumeSubheading
+    {NU CS Department Student Ambassador}{Evanston, IL}
+    {Student Ambassador}{Nov 2024 – Present}
+    \resumeItemListStart
+      \item Selected as 1 of 3 undergraduate CS students to serve as points of contacts in advising first-year major selection
+    \resumeItemListEnd
+
+\resumeSubheading
+    {NU CS Department Peer Mentor (Undergraduate TA)}{Evanston, IL}
+    {Peer Mentor}{Aug 2023 – Present}
+    \resumeItemListStart
+      \item Held weekly office hours and graded weekly homeworks for CS 212 Mathematical Foundations of CS (5 quarters) and CS 336 Design and Analysis of Algorithms (1 quarter) 
+    \resumeItemListEnd
+    
+% \resumeSubheading
+%     {NU Tech Ethics Fellowship}{Evanston, IL}
+%     {Machine Learning Ethics Fellow}{Aug 2023 – Nov 2023}
+%     \resumeItemListStart
+%       \item Selected to be one of six undergraduate students to be technology ethics fellows
+%       \item Worked with CS faculty Prof. Zach Wood-Doughty to develop course curricula for CS 349 Machine Learning
+%     \resumeItemListEnd
+    
+% \resumeSubheading
+%     {NU CS Department Student Faculty Interviewer}{Evanston, IL}
+%     {Student Interviewer}{Dec 2023 – Present}
+%     \resumeItemListStart
+%       \item Selected as one of 13 undergraduate students to serve as a student liaison with candidates for CS teaching faculty
+%     \resumeItemListEnd
+    
+\resumeSubheading
+    {Women in Computing Junior Board}{Evanston, IL}
+    {Board Member}{Feb 2022 – May 2023}
+    \resumeItemListStart
+      \item Collaborated with other board members to create and organize an event for the end of spring quarter
+      \item Worked with leadership/executive members to learn how to run the organization
+    \resumeItemListEnd
+    
+% \resumeSubheading
+%     {Saltire Software}{Portland, OR}
+%     {Machine Learning Intern}{Jun – Aug 2021}
+%     \resumeItemListStart
+%       \item Created a vision model that could grade hand-drawn mathematical graphs with 95\% accuracy
+%     \resumeItemListEnd
+
+% \resumeSubheading
+% {Stanford University Mathematics Camp}{Stanford, CA (remote)}
+% {Summer Session}{Class of 2021}
+% \resumeItemListStart
+% \item Highly competitive ($<10\%$ acceptance rate) mathematics summer program
+% \item Program II (Algebraic Topology): Analyzed the topological properties of abstract shapes using algebraic concepts
+% \item Research Project: Exploring the Hopf Fibration and Fiber Bundles
+% \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+\vspace{-6mm}
+
+
+
+\section{\textbf{Skills and Coursework}}
+\vspace{-0.4mm}
+\resumeHeadingSkillStart
+  \resumeSubItem{Languages: }{English as first language, fluent in Mandarin}
+  \resumeSubItem{Computer Skills: }{Python, C, C++, R, Rust, Java, Javascript, Racket, MATLAB, LaTeX}
+  % \resumeSubItem{Tools:}{PTC Creo Parametric, Autodesk Fusion, Google Suite, Microsoft Office, Wondershare Filmora}
+  % \resumeSubItem{Completed CS Courses:}{CS 211 (A), CS 212 (A), CS 214 (A), CS 213 (A), CS 348 (A), CS 349 (A), CS 449 (A), CS 474 (A)}
+  \resumeSubItem{Advanced Technical Coursework:}{(grad-level) Data Economics, (grad-level) Math for ML, (grad-level) Advanced Deep Learning, (grad-level) Probabilistic Graphical Models, (grad-level) Stochastic Processes, Group/Ring/Field Theory, Algebraic/Point-Set Topology (independent study), Real/Complex Analysis (independent study), Advanced Combinatorics (independent study), Statistics and Probability, Chaotic Dynamical Systems}
+\resumeHeadingSkillEnd
+% \vspace{-6mm}
+
+% \section{\textbf{Additional Information}}
+% \vspace{-0.4mm}
+% \small{
+% \textbf{Languages:} English (Native), Mandarin (Fluent)
+
+% \textbf{Interests:} Network Science, AI Agents, Computational Cognition, Deep Learning Theory, AI4Science, Information Geometry, Complexity Research Social Choice Theory, Computer Vision, NLP, Dynamical Systems, Health Informatics, Causal Inference, Early Childhood Cognition, Startup Ecosystems
+% }
+
+\end{document}

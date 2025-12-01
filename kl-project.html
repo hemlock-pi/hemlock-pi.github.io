@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Label Propagation Algorithm Research - Sophia Pi</title>
+    <title>On Flow Matching KL Divergence - Sophia Pi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +12,7 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
+            background-color: #f8fafc; /* slate-50 */
         }
         h1, h2, h3 {
             font-family: 'Lora', serif;
@@ -63,59 +63,50 @@
                     Back to Projects
                 </a>
             </nav>
-            <h1 class="text-4xl font-bold text-slate-900 mb-4">Label Propagation Algorithms on Balanced Stochastic Block Models</h1>
-            <!-- <p class="text-xl text-slate-600 mb-6">September 2023 • Northwestern CS Research Showcase</p> -->
-            <div class="flex items-center space-x-4 text-sm text-slate-500">
+            <h1 class="text-4xl font-bold text-slate-900 mb-4">On Flow Matching KL Divergence</h1>
+            <div class="flex items-center space-x-4 text-sm text-slate-500 mb-6">
                 <span class="inline-flex items-center">
                     <i data-lucide="calendar" class="w-4 h-4 mr-1"></i>
-                    September 2023
+                    November 2025
                 </span>
                 <span class="inline-flex items-center">
                     <i data-lucide="map-pin" class="w-4 h-4 mr-1"></i>
-                    Northwestern University
+                    MAGICS Lab
                 </span>
                 <span class="inline-flex items-center">
-                    <i data-lucide="award" class="w-4 h-4 mr-1"></i>
-                    R&B Feldmann Fellowship
+                    <i data-lucide="file-text" class="w-4 h-4 mr-1"></i>
+                    Preprint (to be submitted to ICML '26)
                 </span>
             </div>
-
         </div>
 
         <!-- Project Image -->
         <div class="mb-12">
-            <img src="lpa-thumbnail.JPG" alt="Label Propagation Algorithm Research" class="w-full rounded-lg shadow-md">
+            <img src="kl-project-thumbnail.png" alt="Flow Matching KL Divergence Project" class="w-full rounded-lg shadow-md">
         </div>
 
         <!-- Project Content -->
         <div class="prose prose-slate max-w-none">
             <p class="text-lg text-slate-700 mb-8 leading-relaxed">
-                [Note that the poster on this page is quite old - will update soon!] 
-            </p>
-            <p class="text-lg text-slate-700 mb-8 leading-relaxed">
-                This was my first real research project and NU, and I will be eternally grateful to my advisor, Prof. Miki Racz, and my PhD mentor, Shuwen Chai, for their mentorship, enthusiasm, and seemingly endless patience for my questions.
+                I'm grateful to my collaborators Maojiang Su, Jerry Yao-Chieh Hu, and Prof. Han Liu for their work on this project. For this paper, I primarily focused on implementing and running numerical experiments to empirically validate the KL identities and error bounds. It was a great experience doing more numerical work while still strengthening my theoretical foundations—a nice complement to my other projects that lean more heavily on theory.
             </p>
             
             <h2>Abstract</h2>
             <p>
-                We study the label propagation algorithm for recovering communities in a graph. In this algorithm, each of <em>n</em> nodes starts with a distinct label; then, iteratively, each node takes on the majority label among its neighbors. This algorithm is simple, fast, model-free, and parallelizable, yet very little is known rigorously about when it is accurate.
+                We investigate KL divergence identities and error bounds for flow-matching objectives. We establish theoretical identities connecting flow-matching objectives to KL divergence and derive error bounds that characterize approximation quality.
             </p>
             <p>
-                Here, we give a near-optimal characterization of when two rounds of label propagation exactly recover communities in a K-community balanced stochastic block model. We complement this with extensive simulations that suggest further conjectures on the behavior of few rounds of label propagation on the stochastic block model.
+                Our work provides both theoretical guarantees and empirical validation through controlled numerical experiments. We validate KL identities and error bounds both with and without learned velocity fields, using controlled perturbations in the latter case to stress-test the theoretical results.
             </p>
         </div>
 
         <!-- Project Links -->
         <div class="mt-12 bg-white rounded-lg shadow-md border border-slate-200 p-6">
-            <h3 class="text-lg font-semibold text-slate-900 mb-4">Resources</h3>
+            <h3 class="text-lg font-semibold text-slate-900 mb-4">Paper</h3>
             <div class="flex flex-wrap gap-4">
-                <a href="lpa-poster.pdf" class="inline-flex items-center bg-[#100dc9] text-white px-4 py-2 rounded-lg hover:bg-[#0d0aa3] transition-colors">
-                    <i data-lucide="file-text" class="w-4 h-4 mr-2"></i>
-                    View Poster (PDF)
-                </a>
-                <a href="https://www.mccormick.northwestern.edu/computer-science/news-events/news/articles/2023/showcase-highlights-undergraduate-student-summer-research-projects.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-[#100dc9] text-white px-4 py-2 rounded-lg hover:bg-[#0d0aa3] transition-colors">
+                <a href="https://arxiv.org/abs/2511.05480" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-[#100dc9] text-white px-4 py-2 rounded-lg hover:bg-[#0d0aa3] transition-colors">
                     <i data-lucide="external-link" class="w-4 h-4 mr-2"></i>
-                    NU CS Research Showcase
+                    arXiv Preprint
                 </a>
             </div>
         </div>
@@ -148,4 +139,5 @@
         lucide.createIcons();
     </script>
 </body>
-</html> 
+</html>
+

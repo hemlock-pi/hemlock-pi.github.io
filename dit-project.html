@@ -72,11 +72,11 @@
                 </span>
                 <span class="inline-flex items-center">
                     <i data-lucide="map-pin" class="w-4 h-4 mr-1"></i>
-                    NeurIPS 2024
+                    MAGICS Lab
                 </span>
                 <span class="inline-flex items-center">
                     <i data-lucide="file-text" class="w-4 h-4 mr-1"></i>
-                    Conference Paper
+                    NeurIPS '24 Conference Paper
                 </span>
             </div>
 
@@ -96,19 +96,10 @@
             
             <h2>Abstract</h2>
             <p>
-                We investigate the <strong>statistical and computational limits</strong> of latent <strong>Diffusion Transformers (DiTs)</strong> under the <strong>low-dimensional linear latent space assumption</strong>.
+                We investigate the statistical and computational limits of latent Diffusion Transformers (DiTs) under a low-dimensional linear latent space assumption. Statistically, we derive approximation error bounds for the score network that are sub-linear in the latent space dimension, along with corresponding sample complexity bounds. Computationally, we characterize the hardness of forward inference and backward computation, identifying efficient criteria that enable almost-linear time inference and training by leveraging low-rank structure in gradient computations.
             </p>
-            
             <p>
-                <strong>Statistically</strong>, we study the <strong>universal approximation</strong> and <strong>sample complexity</strong> of the DiTs score function, as well as the <strong>distribution recovery property</strong> of the initial data. Specifically, under mild data assumptions, we derive an <strong>approximation error bound</strong> for the score network of latent DiTs, which is <strong>sub-linear in the latent space dimension</strong>. Additionally, we derive the corresponding <strong>sample complexity bound</strong> and show that the data distribution generated from the estimated score function converges toward a proximate area of the original one.
-            </p>
-            
-            <p>
-                <strong>Computationally</strong>, we characterize the hardness of both <strong>forward inference</strong> and <strong>backward computation</strong> of latent DiTs, assuming the <strong>Strong Exponential Time Hypothesis (SETH)</strong>. For forward inference, we identify <strong>efficient criteria</strong> for all possible latent DiTs inference algorithms and showcase our theory by pushing the efficiency toward <strong>almost-linear time inference</strong>. For backward computation, we leverage the <strong>low-rank structure</strong> within the gradient computation of DiTs training for possible algorithmic speedup. Specifically, we show that such speedup achieves <strong>almost-linear time latent DiTs training</strong> by casting the DiTs gradient as a series of chained <strong>low-rank approximations</strong> with bounded error.
-            </p>
-            
-            <p>
-                Under the <strong>low-dimensional assumption</strong>, we show that the <strong>statistical rates</strong> and the <strong>computational efficiency</strong> are all dominated by the dimension of the subspace, suggesting that latent DiTs have the potential to bypass the challenges associated with the <strong>high dimensionality</strong> of initial data.
+                Under the low-dimensional assumption, both statistical rates and computational efficiency are dominated by the subspace dimension, suggesting that latent DiTs can bypass the challenges associated with high-dimensional data.
             </p>
         </div>
 
