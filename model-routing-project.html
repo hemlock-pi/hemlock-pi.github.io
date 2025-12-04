@@ -94,7 +94,7 @@
                 This was my first major empirical or applied ML project, and I had a really great time living and learning in Pittsburgh. I'm grateful to Prof. Graham Neubig and Apurva Gandhi (PhD student at LTI) for their mentorship and guidance, and to everyone in the lab and the CMU community more broadly for making this such a rich learning experience.
             </p>
             <p class="text-lg text-slate-700 mb-8 leading-relaxed">
-                Coming from a mostly theoretical ML background, this project was eye-opening in terms of what intuitions transferred over and, perhaps more importantly, what things I thought about a lot in theory that didn't seem to matter as much in practice. For instance, I did a lot of work on sample complexity bounds in my theoretical projects, but for this project at least, that wasn't really a concern—you just took as much data as you possibly could, and there was never any careful computation about "oh well our transformer network captures this hypothesis class, therefore we should compute how much data we need." That was never part of the picture. It was a valuable reminder that the right level of theoretical rigor depends on the problem at hand.
+                Coming from a mostly theoretical ML background, this project was eye-opening in terms of what intuitions transferred over and, perhaps more importantly, what things I thought about a lot in theory that didn't seem to matter as much in practice. For instance, I did a lot of work on sample complexity bounds in my theoretical projects, but for this project at least, that wasn't really a concern—you just took as much data as you possibly could. It was a valuable reminder that the right level of theoretical rigor depends on the problem at hand.
             </p>
             
             <h2>Abstract</h2>
@@ -102,7 +102,7 @@
                 We study whether a learned router over a pool of language models with different cost-performance tradeoffs can reduce software engineering agent cost while preserving performance. We frame this as learning a value function over partial SWE trajectories, with model choice as the action, using a simple RL framework (advantage-weighted regression).
             </p>
             <p>
-                We achieved a 4% improvement in SWE-Bench performance and 15% reduction in cost compared to baseline Claude 4 Sonnet. More interesting was the phenomenon of implicit collaboration: individual models were unaware they were part of a team, but the router mediated coordination where specialized models collectively outperformed any single model. This raises questions about when multi-agent setups outperform individuals and how theory-guided models of collaboration could help design such systems.
+                An interesting observationwas the phenomenon of implicit collaboration: individual models were unaware they were part of a team, but the router mediated coordination where specialized models often collectively outperformed any single model. This raises questions about when multi-agent setups outperform individuals and how theory-guided models of collaboration could help design such systems.
             </p>
         </div>
 
