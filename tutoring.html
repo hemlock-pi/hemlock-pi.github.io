@@ -1,97 +1,49 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutoring - Sophia Pi</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tutoring &mdash; Sophia Pi</title>
+    <meta name="description" content="One-on-one tutoring in math, computer science, and SAT/ACT prep, from middle school through undergraduate level.">
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-        }
-        h1, h2, h3 {
-            font-family: 'Lora', serif;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/site.css">
 </head>
-<body class="text-slate-800">
+<body>
 
-    <!-- Header will be loaded dynamically -->
+    <main class="shell shell--slim page">
 
-    <!-- Main Content -->
-    <main class="max-w-5xl mx-auto p-4 sm:p-6 lg:p-8">
-        
-        <!-- Page Header -->
-        <div class="py-12 sm:py-16">
-            <h1 class="text-4xl font-bold text-slate-900 mb-4">Academic Tutoring</h1>
-            <!-- <p class="text-xl text-slate-600">One-on-one tutoring for middle school through undergraduate students.</p> -->
+        <header class="page-head">
+            <h1>Academic tutoring</h1>
+        </header>
+
+        <div class="prose">
+            <p>
+                I tutor one-on-one in <strong>math</strong>, <strong>computer science</strong>, and
+                <strong>SAT/ACT prep</strong>, for students from middle school through the
+                undergraduate level, either <strong>online or in person</strong>. I custom-make
+                worksheets and digital learning tools for each student every week, tailored to what
+                they need and how they learn. Most students work with me for an hour a week, but
+                I'm happy to fit around whatever schedule works for your family.
+            </p>
+            <p>
+                My price is whatever the family wants to pay, including nothing at all: I'm glad to
+                tutor at no cost. <strong>Whatever weekly rate we settle on, the first session is
+                always free.</strong>
+            </p>
         </div>
 
-        <!-- Tutoring Overview -->
-        <section class="mb-16">
-            <div class="bg-white rounded-lg shadow-md border border-slate-200 p-8">
-                <div class="max-w-3xl mx-auto text-center">
-                    <!-- <h2 class="text-2xl font-bold text-slate-900 mb-6">What I Offer</h2> -->
-                    <p class="text-lg text-slate-600 mb-8">
-                        I provide one-on-one tutoring in <strong>math</strong>, <strong>computer science</strong>, and <strong>SAT/ACT prep</strong> for students from middle school through undergraduate level. Sessions are available both online and in-person.
-                    </p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                        <div class="text-left">
-                            <h3 class="text-lg font-semibold text-slate-900 mb-3">Personalized Approach</h3>
-                            <p class="text-slate-600">I custom-make worksheets and digital learning tools for each student every week, tailored to their specific needs and learning style.</p>
-                        </div>
-                        <div class="text-left">
-                            <h3 class="text-lg font-semibold text-slate-900 mb-3">Flexible Scheduling</h3>
-                            <p class="text-slate-600">Most students work with me for 1 hour per week, but I'm flexible with scheduling to accommodate your needs.</p>
-                        </div>
-                    </div>
+        <div class="button-row mt-lg">
+            <a class="button" href="mailto:sophiapi@engineering.upenn.edu?subject=Tutoring%20inquiry">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                Inquire about tutoring
+            </a>
+        </div>
 
-                    <div class="bg-[#100dc9]/10 rounded-lg p-6 mb-8">
-                        <h3 class="text-lg font-semibold text-slate-900 mb-3">Pricing</h3>
-                        <p class="text-slate-600 mb-3">My price is whatever the family wants - I am happy to tutor at no cost.</p>
-                        <p class="text-slate-600"><strong>Regardless of whatever weekly price we decide on, the first session is always free.</strong></p>
-                    </div>
-
-                    <a href="mailto:sophiapi2026.1@u.northwestern.edu" class="inline-flex items-center bg-[#100dc9] text-white px-6 py-3 rounded-lg hover:bg-[#100dc9]/80 transition-colors shadow">
-                        <i data-lucide="mail" class="w-5 h-5 mr-2"></i>
-                        Inquire About Tutoring
-                    </a>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-slate-100 border-t border-slate-200 mt-16">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="flex justify-center space-x-6">
-                <a href="mailto:sophiapi2026.1@u.northwestern.edu" class="text-slate-500 hover:text-slate-900">
-                    <i data-lucide="mail" class="w-7 h-7"></i>
-                </a>
-                <a href="https://scholar.google.com/citations?user=sRitvmkAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-slate-900">
-                    <span class="sr-only">Google Scholar</span>
-                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.242 13.769L0 9.5L12 0l12 9.5l-5.242 4.269C17.548 11.249 14.978 9 12 9s-5.548 2.249-6.758 4.769zM12 10c-1.381 0-2.5 1.119-2.5 2.5s1.119 2.5 2.5 2.5s2.5-1.119 2.5-2.5s-1.119-2.5-2.5-2.5zM12 15a2 2 0 100-4 2 2 0 000 4z"/><path d="M12 14c-2.33 0-4.474 1.186-5.833 3.004L12 24l5.833-6.996C16.474 15.186 14.33 14 12 14z"/></svg>
-                </a>
-                <a href="https://www.linkedin.com/in/sophia-yixinyun-pi/" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-slate-900">
-                    <i data-lucide="linkedin" class="w-7 h-7"></i>
-                </a>
-            </div>
-            <div class="text-center text-slate-500 mt-8 text-sm">
-                &copy; 2025 Sophia Pi. All Rights Reserved.
-            </div>
-        </div>
-    </footer>
-
-    <script src="header.js"></script>
-    <script>
-        // Initialize lucide icons for the main content
-        lucide.createIcons();
-    </script>
+    <script src="assets/js/site.js"></script>
 </body>
-</html> 
+</html>

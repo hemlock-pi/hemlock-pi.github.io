@@ -1,148 +1,56 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamming Distance Sequences (OEIS) - Sophia Pi</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hamming Distance Sequences &mdash; Sophia Pi</title>
+    <meta name="description" content="A fun sidequest.">
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-        }
-        h1, h2, h3 {
-            font-family: 'Lora', serif;
-        }
-        /* Styles for the article content */
-        .prose {
-            color: #334155; /* slate-700 */
-        }
-        .prose h2 {
-            font-size: 1.5rem;
-            line-height: 2rem;
-            font-weight: 700;
-            margin-top: 2em;
-            margin-bottom: 1em;
-        }
-        .prose p {
-            line-height: 1.75;
-            margin-bottom: 1.25em;
-        }
-        .prose img {
-            border-radius: 0.5rem;
-            margin-top: 2em;
-            margin-bottom: 2em;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-        }
-        .prose a {
-            color: #100dc9;
-            text-decoration: underline;
-            transition: color 0.2s;
-        }
-        .prose a:hover {
-            color: #0d0aa3;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/site.css">
 </head>
-<body class="text-slate-800">
+<body>
 
-    <!-- Header will be loaded dynamically -->
+    <main class="shell shell--slim page">
+        <a class="backlink" href="index.html#projects">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>All projects
+        </a>
 
-    <!-- Main Content -->
-    <main class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
-        
-        <!-- Project Header -->
-        <div class="py-12 sm:py-16">
-            <nav class="mb-6">
-                <a href="index.html#projects" class="text-[#100dc9] hover:text-[#0d0aa3] flex items-center">
-                    <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
-                    Back to Projects
-                </a>
-            </nav>
-            <h1 class="text-4xl font-bold text-slate-900 mb-4">Hamming Distance Sequences (OEIS)</h1>
-            <!-- <p class="text-xl text-slate-600 mb-6">November 2023 • OEIS Contribution</p> -->
-            <div class="flex items-center space-x-4 text-sm text-slate-500">
-                <span class="inline-flex items-center">
-                    <i data-lucide="calendar" class="w-4 h-4 mr-1"></i>
-                    November 2023
-                </span>
-                <span class="inline-flex items-center">
-                    <i data-lucide="map-pin" class="w-4 h-4 mr-1"></i>
-                    Online Encyclopedia of Integer Sequences
-                </span>
-                <!-- <span class="inline-flex items-center">
-                    <i data-lucide="users" class="w-4 h-4 mr-1"></i>
-                    Collaboration with Mithra Karamchedu
-                </span> -->
+        <header class="project-head">
+            <h1>Hamming Distance Sequences</h1>
+            <p class="project-head__blurb">A fun sidequest.</p>
+            <div class="meta">
+                <div><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>November 2023</div>
+                <div><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Independent side project</div>
+                <div><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg>OEIS A365618, A367055</div>
+            </div>
+        </header>
+
+        <figure class="project-figure">
+            <img src="assets/img/projects/hamming.png" alt="Fractal-like structure in Hamming distance sequences">
+        </figure>
+
+        <article class="prose">
+            <div class="standfirst">
+            <p>My friend Mithra Karamchedu and I were learning about metric spaces and, as a simple exercise, tried to prove that Hamming distance is a metric (we failed &mdash; it isn't). What started as a casual weekend project turned into a genuinely fun sidequest: we coded up a couple of simulations, did some math, found some interesting fractal-like structure, submitted it to the OEIS, and it got published, which was neat. Very much one of my more out-there and unrelated projects, but a good time.</p>
             </div>
 
-        </div>
-
-        <!-- Project Image -->
-        <div class="mb-12">
-            <img src="hamming thumbnail.png" alt="Hamming Distance Sequences" class="w-full rounded-lg shadow-md">
-        </div>
-
-        <!-- Project Content -->
-        <div class="prose prose-slate max-w-none">
-            <p class="text-lg text-slate-700 mb-8 leading-relaxed">
-                My friend Mithra Karamchedu and I were learning about metric spaces and, as a simple exercise, tried to prove that hamming distance is a metric (we failed—it isn't). What started as a casual weekend project turned into a fun side quest. We coded up a couple of simulations, did some math exercises, found some interesting fractal-like structure, submitted it to the OEIS, and it got published, which was neat. This is an example of one of my more out-there, unrelated projects, but it was really cool.
-            </p>
-            
             <h2>Abstract</h2>
-            <p>
-                The <strong>hamming distance</strong> between two strings is the number of positions at which the corresponding symbols are different. During our exploration, we discovered interesting fractal-like patterns and sequences that hadn't been documented before.
-            </p>
-            <p>
-                After verifying our findings and following the proper submission process, we contributed two new sequences to the <strong>Online Encyclopedia of Integer Sequences (OEIS)</strong>: A365618 and A367055.
-            </p>
-        </div>
+            <p>The <strong>Hamming distance</strong> between two strings is the number of positions at which the corresponding symbols differ. Poking at sequences built from it, we found fractal-like patterns that hadn't been documented before.</p>
+            <p>After verifying the findings and going through the submission process, we contributed two new sequences to the <strong>Online Encyclopedia of Integer Sequences</strong>: A365618 and A367055.</p>
+        </article>
 
-        <!-- Project Links -->
-        <div class="mt-12 bg-white rounded-lg shadow-md border border-slate-200 p-6">
-            <h3 class="text-lg font-semibold text-slate-900 mb-4">OEIS Sequences</h3>
-            <div class="flex flex-wrap gap-4">
-                <a href="https://oeis.org/A365618" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-[#100dc9] text-white px-4 py-2 rounded-lg hover:bg-[#0d0aa3] transition-colors">
-                    <i data-lucide="external-link" class="w-4 h-4 mr-2"></i>
-                    Sequence A365618
-                </a>
-                <a href="https://oeis.org/A367055" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-[#100dc9] text-white px-4 py-2 rounded-lg hover:bg-[#0d0aa3] transition-colors">
-                    <i data-lucide="external-link" class="w-4 h-4 mr-2"></i>
-                    Sequence A367055
-                </a>
+        <section class="resources">
+            <h2>OEIS sequences</h2>
+            <div class="button-row">
+                <a class="button" href="https://oeis.org/A365618" target="_blank" rel="noopener noreferrer"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>Sequence A365618</a>
+                <a class="button" href="https://oeis.org/A367055" target="_blank" rel="noopener noreferrer"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>Sequence A367055</a>
             </div>
-        </div>
+        </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-slate-100 border-t border-slate-200 mt-16">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="flex justify-center space-x-6">
-                <a href="mailto:sophiapi2026.1@u.northwestern.edu" class="text-slate-500 hover:text-slate-900">
-                    <i data-lucide="mail" class="w-7 h-7"></i>
-                </a>
-                <a href="https://scholar.google.com/citations?user=sRitvmkAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-slate-900">
-                    <span class="sr-only">Google Scholar</span>
-                     <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.242 13.769L0 9.5L12 0l12 9.5l-5.242 4.269C17.548 11.249 14.978 9 12 9s-5.548 2.249-6.758 4.769zM12 10c-1.381 0-2.5 1.119-2.5 2.5s1.119 2.5 2.5 2.5s2.5-1.119 2.5-2.5s-1.119-2.5-2.5-2.5zM12 15a2 2 0 100-4 2 2 0 000 4z"/><path d="M12 14c-2.33 0-4.474 1.186-5.833 3.004L12 24l5.833-6.996C16.474 15.186 14.33 14 12 14z"/></svg>
-                </a>
-                <a href="https://www.linkedin.com/in/sophia-yixinyun-pi/" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-slate-900">
-                    <i data-lucide="linkedin" class="w-7 h-7"></i>
-                </a>
-            </div>
-            <div class="text-center text-slate-500 mt-8 text-sm">
-                &copy; 2025 Sophia Pi. All Rights Reserved.
-            </div>
-        </div>
-    </footer>
-
-    <script src="header.js"></script>
-    <script>
-        // Initialize lucide icons for the main content
-        lucide.createIcons();
-    </script>
+    <script src="assets/js/site.js"></script>
 </body>
-</html> 
+</html>

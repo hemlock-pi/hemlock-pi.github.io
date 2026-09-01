@@ -1,0 +1,1003 @@
+/* ==========================================================================
+   Sophia Pi — site styles
+   One stylesheet for every page. Design tokens first, then layout, then
+   components. Anything page-specific lives at the bottom under its own
+   heading rather than in a <style> block on the page itself.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Tokens
+   -------------------------------------------------------------------------- */
+
+:root {
+    /* Yellow ground (the blog page's old #f6eb81) with white content surfaces.
+       Text and rules are warmed to sit on the yellow rather than fight it;
+       blue stays the only accent, and reads well against it. */
+    --paper:        #f6eb81;
+    --paper-sunk:   #f0e36a;
+    --surface:      #ffffff;
+    --ink:          #17160f;
+    --body:         #3a382c;
+    --muted:        #635f49;
+    --rule:         #ddcf6b;
+    --rule-strong:  #c7b74e;
+
+    --accent:       #100dc9;
+    --accent-deep:  #0b0994;
+    --accent-wash:  rgba(255, 255, 255, 0.55);
+
+    --sans:    "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --mono:    "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --display: var(--mono);
+
+    /* Type scale — denser than a reading site; this is closer to a notebook. */
+    --step--2: 0.6875rem;
+    --step--1: 0.8125rem;
+    --step-0:  1rem;
+    --step-1:  1.125rem;
+    --step-2:  1.375rem;
+    --step-3:  clamp(1.5rem, 1.25rem + 1.2vw, 2rem);
+    --step-4:  clamp(1.875rem, 1.4rem + 2.2vw, 2.75rem);
+
+    /* Rhythm */
+    --gutter:     clamp(1.25rem, 5vw, 2.5rem);
+    --measure:    72ch;
+    --shell:      68rem;
+    --shell-slim: 52rem;
+
+    --radius:     2px;
+    --header-h:   3.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & base
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: var(--paper);
+    color: var(--body);
+    font-family: var(--sans);
+    font-size: var(--step-0);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Headings run in the mono face — the whole site reads as one technical
+   system rather than a document set in a book face. */
+h1, h2, h3, h4 {
+    font-family: var(--display);
+    color: var(--ink);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-wrap: balance;
+}
+
+p { margin: 0 0 1em; }
+p:last-child { margin-bottom: 0; }
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+::selection {
+    background: var(--accent);
+    color: #fff;
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--rule);
+    margin: 2.5rem 0;
+}
+
+/* Links in running text: underline thickens on hover instead of the default
+   that collides with descenders. */
+.prose a,
+.link {
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 100% 1px;
+    padding-bottom: 1px;
+    transition: background-size 0.15s ease, color 0.15s ease;
+}
+
+.prose a:hover,
+.link:hover {
+    background-size: 100% 2px;
+    color: var(--accent-deep);
+}
+
+/* --------------------------------------------------------------------------
+   3. Layout primitives
+   -------------------------------------------------------------------------- */
+
+.shell {
+    width: 100%;
+    max-width: var(--shell);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+}
+
+.shell--slim { max-width: var(--shell-slim); }
+
+.page {
+    padding-block: clamp(2rem, 5vw, 3.5rem) clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.section {
+    padding-block: clamp(2rem, 5vw, 3.25rem);
+    scroll-margin-top: calc(var(--header-h) + 1rem);
+}
+
+.section + .section { border-top: 1px solid var(--rule); }
+
+.stack > * + * { margin-top: 1em; }
+
+/* Small mono label above a heading. */
+.eyebrow {
+    font-family: var(--mono);
+    font-size: var(--step--2);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 0.6rem;
+}
+
+/* Section title with a hairline rule running out to the right edge. */
+.rule-heading {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+}
+
+.rule-heading h2 {
+    font-size: var(--step-1);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    flex-shrink: 0;
+}
+
+.rule-heading::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+}
+
+/* --------------------------------------------------------------------------
+   4. Header & footer (injected by assets/js/site.js)
+   -------------------------------------------------------------------------- */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(246, 235, 129, 0.88);
+    backdrop-filter: saturate(180%) blur(10px);
+    -webkit-backdrop-filter: saturate(180%) blur(10px);
+    border-bottom: 1px solid var(--rule);
+}
+
+.site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    min-height: var(--header-h);
+}
+
+.wordmark {
+    font-family: var(--mono);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+}
+
+.wordmark span { color: var(--accent); }
+
+.site-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.site-nav a {
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    color: var(--muted);
+    padding-block: 0.3rem;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.site-nav a:hover { color: var(--ink); }
+
+.site-nav a[aria-current="page"] {
+    color: var(--ink);
+    border-bottom-color: var(--accent);
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius);
+    color: var(--ink);
+    padding: 0.35rem 0.5rem;
+    cursor: pointer;
+    line-height: 0;
+}
+
+@media (max-width: 820px) {
+    .nav-toggle { display: block; }
+
+    .site-nav {
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: var(--paper);
+        border-bottom: 1px solid var(--rule);
+        padding: 0.25rem var(--gutter) 0.75rem;
+    }
+
+    .site-nav[data-open="true"] { display: flex; }
+
+    .site-nav a {
+        padding-block: 0.55rem;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .site-nav a[aria-current="page"] { color: var(--accent); }
+}
+
+.site-footer {
+    border-top: 1px solid var(--rule);
+    background: var(--paper-sunk);
+    margin-top: clamp(2.5rem, 6vw, 4rem);
+    padding-block: 2rem;
+}
+
+.site-footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+}
+
+.site-footer__links {
+    display: flex;
+    gap: 1.125rem;
+    align-items: center;
+}
+
+.site-footer__links a {
+    color: var(--muted);
+    display: inline-flex;
+    transition: color 0.15s ease;
+}
+
+.site-footer__links a:hover { color: var(--accent); }
+
+.site-footer__note {
+    font-family: var(--mono);
+    font-size: var(--step--2);
+    letter-spacing: 0.06em;
+    color: var(--muted);
+}
+
+/* --------------------------------------------------------------------------
+   5. Prose
+   -------------------------------------------------------------------------- */
+
+.prose {
+    max-width: var(--measure);
+    color: var(--body);
+}
+
+.prose h2 {
+    font-size: var(--step-1);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    margin: 2.25rem 0 0.85rem;
+}
+
+.prose h3 {
+    font-size: var(--step-0);
+    margin: 1.75rem 0 0.6rem;
+}
+
+.prose > p { line-height: 1.65; }
+
+.prose strong { color: var(--ink); font-weight: 600; }
+
+/* Standfirst — the informal opener on every project page. Slightly larger and
+   darker than body copy, but the same face; no editorial serif. */
+.standfirst {
+    font-size: var(--step-1);
+    line-height: 1.6;
+    color: var(--body);
+}
+
+.standfirst p + p { margin-top: 0.85em; }
+
+/* Callout for notes, errata, availability caveats. */
+.callout {
+    border-left: 2px solid var(--accent);
+    background: var(--accent-wash);
+    padding: 0.85rem 1.1rem;
+    font-size: var(--step--1);
+    line-height: 1.6;
+    color: var(--body);
+}
+
+.callout strong { color: var(--ink); }
+
+/* --------------------------------------------------------------------------
+   6. Page hero (about block on the homepage)
+   -------------------------------------------------------------------------- */
+
+.hero {
+    display: grid;
+    grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: start;
+    padding-block: clamp(2rem, 5vw, 3.25rem);
+}
+
+@media (max-width: 720px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero__portrait { max-width: 10rem; }
+}
+
+.hero__portrait {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius);
+}
+
+.hero h1 {
+    font-size: var(--step-4);
+    margin-bottom: 0.35rem;
+}
+
+/* The (π) picks up the accent, matching the wordmark in the header. */
+.hero h1 span { color: var(--accent); }
+
+.hero__tagline {
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    color: var(--muted);
+    margin-bottom: 1.35rem;
+}
+
+.hero__bio { max-width: var(--measure); }
+
+.hero__contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    color: var(--muted);
+}
+
+.hero__contact span,
+.hero__contact a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.hero__contact svg { color: var(--muted); }
+
+/* --------------------------------------------------------------------------
+   7. News timeline
+   -------------------------------------------------------------------------- */
+
+.news-year {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    color: var(--ink);
+    margin: 1.85rem 0 0.35rem;
+}
+
+.news-year:first-child { margin-top: 0; }
+
+.news-year::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+}
+
+.news-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.news-list li {
+    display: grid;
+    grid-template-columns: 8rem minmax(0, 1fr);
+    gap: 1.25rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--rule);
+}
+
+.news-list li:last-child { border-bottom: 0; }
+
+.news-list time {
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    color: var(--muted);
+    padding-top: 0.15rem;
+}
+
+.news-list p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+@media (max-width: 620px) {
+    .news-list li {
+        grid-template-columns: 1fr;
+        gap: 0.3rem;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   8. Project cards
+   -------------------------------------------------------------------------- */
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+    gap: 1.25rem;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color 0.15s ease;
+}
+
+.card:hover { border-color: var(--accent); }
+
+.card__media {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper-sunk);
+}
+
+.card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1rem 1.1rem 1.1rem;
+}
+
+.card__venue {
+    font-family: var(--mono);
+    font-size: var(--step--2);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.45rem;
+}
+
+.card__title {
+    font-size: var(--step-0);
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 0.4rem;
+}
+
+.card__title a { color: inherit; }
+.card:hover .card__title a { color: var(--accent); }
+
+.card__blurb {
+    font-size: var(--step--1);
+    line-height: 1.55;
+    color: var(--muted);
+    margin: 0 0 0.9rem;
+    flex: 1;
+}
+
+.card__more {
+    font-family: var(--mono);
+    font-size: var(--step--2);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.card__more::after {
+    content: " \2192";
+    transition: margin-left 0.15s ease;
+}
+
+.card:hover .card__more::after { margin-left: 0.2rem; }
+
+/* Whole card is clickable; the title link stays the real link. */
+.card__link::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+/* --------------------------------------------------------------------------
+   9. Project pages
+   -------------------------------------------------------------------------- */
+
+.backlink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--mono);
+    font-size: var(--step--2);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: color 0.15s ease;
+}
+
+.backlink:hover { color: var(--accent); }
+.backlink svg { transition: transform 0.15s ease; }
+.backlink:hover svg { transform: translateX(-2px); }
+
+.project-head {
+    padding-block: 1.75rem 2rem;
+    max-width: var(--measure);
+}
+
+.project-head h1 {
+    font-size: var(--step-3);
+    margin-bottom: 0.5rem;
+}
+
+.project-head__blurb {
+    font-size: var(--step-0);
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+}
+
+/* The standardized When / Where / What strip. Every project page carries
+   exactly these three fields, in this order. */
+.meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    color: var(--muted);
+}
+
+.meta div {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.meta svg {
+    flex-shrink: 0;
+    color: var(--rule-strong);
+}
+
+.project-figure {
+    margin: 0 0 clamp(1.75rem, 4vw, 2.5rem);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--surface);
+}
+
+.project-figure img {
+    width: 100%;
+    max-height: 24rem;
+    object-fit: cover;
+}
+
+/* Resource buttons at the foot of a project page. */
+.resources {
+    margin-top: clamp(2rem, 5vw, 3rem);
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    max-width: var(--measure);
+}
+
+.resources h2 {
+    font-family: var(--mono);
+    font-size: var(--step--2);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.85rem;
+}
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    padding: 0.5rem 0.85rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: #fff;
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.button:hover {
+    background: var(--accent-deep);
+    border-color: var(--accent-deep);
+}
+
+.button--ghost {
+    background: transparent;
+    color: var(--accent);
+}
+
+.button--ghost:hover {
+    background: var(--accent-wash);
+    color: var(--accent-deep);
+}
+
+/* --------------------------------------------------------------------------
+   10. Simple page headers (blog, art, tutoring, contact, personal)
+   -------------------------------------------------------------------------- */
+
+.page-head {
+    padding-block: 1.5rem clamp(1.75rem, 4vw, 2.5rem);
+    max-width: var(--measure);
+}
+
+.page-head h1 {
+    font-size: var(--step-4);
+    margin-bottom: 0.75rem;
+}
+
+.page-head__intro {
+    font-size: var(--step-0);
+    line-height: 1.65;
+    color: var(--body);
+}
+
+.page-head__intro p + p { margin-top: 0.85em; }
+
+/* --------------------------------------------------------------------------
+   11. Blog list
+   -------------------------------------------------------------------------- */
+
+.post-list {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+}
+
+.post {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color 0.15s ease;
+}
+
+.post:hover { border-color: var(--accent); }
+
+.post__media {
+    aspect-ratio: 16 / 9;
+    border-bottom: 1px solid var(--rule);
+    overflow: hidden;
+}
+
+.post__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.post__body { padding: 1.1rem; }
+
+.post__date {
+    font-family: var(--mono);
+    font-size: var(--step--2);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.45rem;
+}
+
+.post__title {
+    font-size: var(--step-1);
+    margin-bottom: 0.5rem;
+}
+
+.post__title a { color: inherit; }
+.post:hover .post__title a { color: var(--accent); }
+.post__title a::before { content: ""; position: absolute; inset: 0; }
+
+.post__excerpt {
+    font-size: var(--step--1);
+    line-height: 1.6;
+    color: var(--body);
+    margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   12. Art gallery
+   -------------------------------------------------------------------------- */
+
+.art-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+    gap: 2rem 1.5rem;
+    align-items: start;
+}
+
+.art-piece__caption { margin-bottom: 0.65rem; }
+
+.art-piece__title {
+    font-size: var(--step-0);
+    margin-bottom: 0.2rem;
+}
+
+.art-piece__note {
+    font-size: var(--step--1);
+    color: var(--muted);
+    margin: 0;
+}
+
+/* Instagram's embed script rewrites these; the border keeps the unstyled
+   placeholder from looking broken while it loads. */
+.art-grid .instagram-media {
+    margin: 0 !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    border: 1px solid var(--rule) !important;
+    border-radius: var(--radius) !important;
+    box-shadow: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   13. Side-by-side text + photo (personal page)
+   -------------------------------------------------------------------------- */
+
+.feature {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    gap: clamp(1.25rem, 3.5vw, 2.25rem);
+    align-items: start;
+    margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.feature--flip { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
+.feature--flip .feature__figure { order: 2; }
+
+@media (max-width: 720px) {
+    .feature,
+    .feature--flip { grid-template-columns: 1fr; }
+    .feature--flip .feature__figure { order: 0; }
+}
+
+.feature__figure { margin: 0; }
+
+.feature__figure img {
+    width: 100%;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+}
+
+.feature__figure figcaption {
+    font-family: var(--mono);
+    font-size: var(--step--2);
+    line-height: 1.5;
+    color: var(--muted);
+    margin-top: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   14. Info cards (contact, tutoring)
+   -------------------------------------------------------------------------- */
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: 2rem;
+    align-items: start;
+}
+
+.info-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.info-list li {
+    display: flex;
+    gap: 0.85rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--rule);
+}
+
+.info-list li:first-child { padding-top: 0; }
+.info-list li:last-child { border-bottom: 0; }
+
+.info-list__icon {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius);
+    background: var(--accent-wash);
+    color: var(--accent);
+}
+
+.info-list__label {
+    font-family: var(--mono);
+    font-size: var(--step--2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.15rem;
+}
+
+.info-list__value {
+    margin: 0;
+    color: var(--ink);
+    line-height: 1.5;
+}
+
+.info-list__value a { color: var(--ink); }
+.info-list__value a:hover { color: var(--accent); }
+
+.link-card {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.85rem;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    margin-bottom: 0.6rem;
+    color: var(--ink);
+    transition: border-color 0.15s ease;
+}
+
+.link-card:hover { border-color: var(--accent); }
+
+.link-card svg { color: var(--accent); flex-shrink: 0; }
+
+.link-card__name {
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: var(--step--1);
+}
+
+.link-card__detail {
+    font-size: var(--step--2);
+    color: var(--muted);
+    word-break: break-all;
+}
+
+.panel {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: clamp(1.25rem, 3.5vw, 1.85rem);
+}
+
+.panel + .panel { margin-top: 1.25rem; }
+
+.panel h2 {
+    font-size: var(--step-1);
+    margin-bottom: 0.6rem;
+}
+
+.panel h3 {
+    font-size: var(--step-0);
+    margin-bottom: 0.35rem;
+}
+
+.split {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   15. Utilities
+   -------------------------------------------------------------------------- */
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.text-muted { color: var(--muted); }
+.mt-lg { margin-top: clamp(1.5rem, 4vw, 2.25rem); }
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

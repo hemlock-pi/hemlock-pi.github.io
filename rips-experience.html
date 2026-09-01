@@ -1,121 +1,84 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RIPS Experience - Sophia Pi</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RIPS 2024 &mdash; Sophia Pi</title>
+    <meta name="description" content="A summer at IPAM's Research in Industrial Projects for Students program &mdash; the people, the mentorship, and the bad math puns.">
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* slate-50 */
-        }
-        h1, h2, h3 {
-            font-family: 'Lora', serif;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/site.css">
 </head>
-<body class="text-slate-800">
+<body>
 
-    <!-- Header will be loaded dynamically -->
+    <main class="shell shell--slim page">
+        <a class="backlink" href="index.html#news">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to news
+        </a>
 
-    <!-- Main Content -->
-    <main class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8 py-12">
-
-        <!-- Back to News -->
-        <div class="mb-8">
-            <a href="index.html#news" class="inline-flex items-center text-slate-600 hover:text-slate-900 transition-colors">
-                <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
-                Back to News
-            </a>
-        </div>
-
-        <!-- Page Header -->
-        <div class="mb-12">
-            <h1 class="text-4xl font-bold text-slate-900 mb-4">RIPS Experience</h1>
-            <p class="text-xl text-slate-600 mb-6">Summer 2024 • IPAM, UCLA</p>
-            <div class="flex items-center space-x-4 text-sm text-slate-500">
-                <span class="inline-flex items-center">
-                    <i data-lucide="calendar" class="w-4 h-4 mr-1"></i>
-                    June - August 2024
-                </span>
-                <span class="inline-flex items-center">
-                    <i data-lucide="map-pin" class="w-4 h-4 mr-1"></i>
-                    Los Angeles, CA
-                </span>
+        <header class="project-head">
+            <h1>RIPS Experience</h1>
+            <div class="meta">
+                <div><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>June &ndash; August 2024</div>
+                <div><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>IPAM, UCLA</div>
+                <div><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg>RIPS 2024</div>
             </div>
-        </div>
+        </header>
 
-        <!-- Main Image -->
-        <div class="mb-12">
-            <img src="drug-discovery-thumbnail.JPG" alt="RIPS Experience" class="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg">
-        </div>
+        <figure class="project-figure">
+            <img src="assets/img/projects/drug-discovery.jpg" alt="RIPS 2024 at IPAM">
+        </figure>
 
-        <!-- Content -->
-        <div class="prose prose-slate max-w-none">
-            <p class="text-lg text-slate-700 mb-8 leading-relaxed">
-                RIPS (Research in Industrial Projects for Students) was an incredible summer experience that combined rigorous mathematical research with real-world applications in drug discovery. Beyond the technical work, it was a summer filled with amazing people, coffee-fueled discussions, and plenty of bad puns.
-            </p>
-            
-            <h2 class="text-2xl font-bold text-slate-900 mb-6">The RIPS Community</h2>
-            <p class="text-slate-700 mb-6">
-                Being part of the 36-student cohort (selected from 4000+ applicants) was both humbling and inspiring. The program brought together students from diverse backgrounds who shared a passion for mathematics and its applications. From late-night problem-solving sessions to weekend hikes in the Santa Monica mountains, the friendships formed during RIPS continue to be some of the most meaningful from my academic journey.
-            </p>
-
-            <h2 class="text-2xl font-bold text-slate-900 mb-6">Mentorship & Learning</h2>
-            <p class="text-slate-700 mb-6">
-                I was incredibly fortunate to work with exceptional mentors: Fang Sun (UCLA CS PhD), Luca Ponzoni and Pat Walters from Relay Therapeutics, Susana Serna (RIPS Director), and Dima Shlyaktenko (IPAM Director).
-            </p>
-
-            <h2 class="text-2xl font-bold text-slate-900 mb-6">Beyond the Research</h2>
-            <p class="text-slate-700 mb-6">
-                While the technical work was challenging and rewarding, some of my fondest memories are of the lighter moments: impromptu math discussions over coffee, team dinners exploring LA's diverse food scene, and the collective groans when someone inevitably made another terrible math pun. The balance of serious research and genuine camaraderie made RIPS a truly special experience.
-            </p>
-
-            <div class="bg-slate-50 border-l-4 border-slate-300 p-6 mb-8">
-                <p class="text-slate-700 italic">
-                    For the technical details of our research project, see the <a href="drug-discovery-project.html" class="text-sky-600 hover:underline">Drug Discovery Project page</a>.
+        <article class="prose">
+            <div class="standfirst">
+                <p>
+                    RIPS (Research in Industrial Projects for Students) was a summer of rigorous
+                    mathematical research pointed squarely at a real-world problem &mdash; and, in between,
+                    a summer of amazing people, coffee-fueled arguments, and a truly punishing volume
+                    of bad puns. This page is about that half of it; the technical work lives on the
+                    <a href="drug-discovery-project.html">drug discovery project page</a>.
                 </p>
             </div>
-        </div>
 
+            <h2>The RIPS Community</h2>
+            <p>
+                Being part of the 36-student cohort was both humbling and inspiring. The program pulls
+                together students from very different backgrounds who all share a soft spot for
+                mathematics and its applications. From late-night problem-solving sessions to weekend
+                hikes in the Santa Monica mountains, the friendships from that summer are some of the
+                most meaningful of my academic life so far.
+            </p>
+
+            <h2>Mentorship &amp; Learning</h2>
+            <p>
+                I was fortunate to work with exceptional mentors: Fang Sun (UCLA CS PhD), Luca Ponzoni
+                and Pat Walters from Relay Therapeutics, Susana Serna (RIPS Director), and Dima
+                Shlyaktenko (IPAM Director).
+            </p>
+
+            <h2>Beyond the Research</h2>
+            <p>
+                The technical work was challenging and rewarding, but some of my fondest memories are
+                of the lighter moments: impromptu math discussions over coffee, team dinners working
+                through LA's food scene, and the collective groan when someone inevitably landed
+                another terrible pun. That balance of serious research and genuine camaraderie is what
+                made the summer special.
+            </p>
+        </article>
+
+        <section class="resources">
+            <h2>Related</h2>
+            <div class="button-row">
+                <a class="button button--ghost" href="drug-discovery-project.html">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg>
+                    The research project
+                </a>
+            </div>
+        </section>
     </main>
-    
-    <!-- Footer -->
-    <footer class="bg-slate-100 border-t border-slate-200 mt-16">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="flex justify-center space-x-6">
-                <a href="#" class="text-slate-500 hover:text-slate-900">
-                    <i data-lucide="mail" class="w-7 h-7"></i>
-                </a>
-                <a href="#" class="text-slate-500 hover:text-slate-900">
-                    <i data-lucide="twitter" class="w-7 h-7"></i>
-                </a>
-                <a href="#" class="text-slate-500 hover:text-slate-900">
-                    <span class="sr-only">Google Scholar</span>
-                     <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.242 13.769L0 9.5L12 0l12 9.5l-5.242 4.269C17.548 11.249 14.978 9 12 9s-5.548 2.249-6.758 4.769zM12 10c-1.381 0-2.5 1.119-2.5 2.5s1.119 2.5 2.5 2.5s2.5-1.119 2.5-2.5s-1.119-2.5-2.5-2.5zM12 15a2 2 0 100-4 2 2 0 000 4z"/><path d="M12 14c-2.33 0-4.474 1.186-5.833 3.004L12 24l5.833-6.996C16.474 15.186 14.33 14 12 14z"/></svg>
-                </a>
-                 <a href="#" class="text-slate-500 hover:text-slate-900">
-                    <i data-lucide="github" class="w-7 h-7"></i>
-                </a>
-                <a href="#" class="text-slate-500 hover:text-slate-900">
-                    <i data-lucide="linkedin" class="w-7 h-7"></i>
-                </a>
-            </div>
-            <div class="text-center text-slate-500 mt-8 text-sm">
-                &copy; 2025 Sophia Pi. All Rights Reserved.
-            </div>
-        </div>
-    </footer>
 
-    <script src="header.js"></script>
-    <script>
-        // Initialize lucide icons for the main content
-        lucide.createIcons();
-    </script>
+    <script src="assets/js/site.js"></script>
 </body>
-</html> 
+</html>
